@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  scope module: :api do
+    scope module: :v1 do
+      post "/shorten", to: 'urls#shorten', as: 'shorten'
+      get '/:key', to: 'urls#redirect', as: 'redirect'
+    end
+  end
 end
